@@ -21,5 +21,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>TMDB_ACCESS_TOKEN</key>
+	<string>$(TMDB_ACCESS_TOKEN)</string>
 </dict>
 </plist>

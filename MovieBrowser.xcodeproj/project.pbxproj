@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		90061B2B2E9FADD400F5E130 /* Exceptions for "MovieBrowser" folder in "MovieBrowser" target */ = {
+		90061B982E9FB16D00F5E130 /* Exceptions for "MovieBrowser" folder in "MovieBrowser" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -43,7 +43,7 @@
 		90061B052E9FADD200F5E130 /* MovieBrowser */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				90061B2B2E9FADD400F5E130 /* Exceptions for "MovieBrowser" folder in "MovieBrowser" target */,
+				90061B982E9FB16D00F5E130 /* Exceptions for "MovieBrowser" folder in "MovieBrowser" target */,
 			);
 			path = MovieBrowser;
 			sourceTree = "<group>";
@@ -208,6 +208,8 @@
 			);
 			mainGroup = 90061AFA2E9FADD200F5E130;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 90061B042E9FADD200F5E130 /* Products */;
 			projectDirPath = "";
@@ -340,6 +342,8 @@
 		};
 		90061B2F2E9FADD400F5E130 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 90061B052E9FADD200F5E130 /* MovieBrowser */;
+			baseConfigurationReferenceRelativePath = Support/Configs/Secrets.template.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -404,6 +408,8 @@
 		};
 		90061B302E9FADD400F5E130 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 90061B052E9FADD200F5E130 /* MovieBrowser */;
+			baseConfigurationReferenceRelativePath = Support/Configs/Secrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
