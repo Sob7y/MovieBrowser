@@ -19,7 +19,6 @@ struct Movie: Decodable {
         guard let path = posterPath else { return nil }
         return URL(string: "https://image.tmdb.org/t/p/w342\(path)")
     }
-    
 }
 
 final class ImageLoader {

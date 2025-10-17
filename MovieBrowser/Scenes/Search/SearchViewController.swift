@@ -34,11 +34,7 @@ class SearchViewController: UIViewController {
         loadCachedData()
         setupUi()
         registerTableViewCells()
-        // Setting TableView Delegate&DataSource
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.keyboardDismissMode = .onDrag
-        tableView.tableFooterView = UIView(frame: .zero) // start with no footer
+        setupTableView()
         
         self.viewModel.onMoviesChanged = { [weak self] _ in
             self?.setLoadingFooter(false)
@@ -50,6 +46,10 @@ class SearchViewController: UIViewController {
         }
     }
     
+}
+
+// MARK: - Private Func
+extension SearchViewController {
     private func registerTableViewCells() {
         self.tableView.register(
             UINib(nibName: MovieTableViewCell.identifier, bundle: nil),
@@ -62,17 +62,22 @@ class SearchViewController: UIViewController {
         // Search bar
         searchBar.placeholder = "Search movies"
         searchBar.delegate = self
-        
     }
     
     private func loadCachedData() {
         if let last = UserDefaults.standard.string(forKey: Constants.Keys.lastQuery), !last.isEmpty {
-                searchBar.text = last
-            }
-            viewModel.loadInitialContent()
+            searchBar.text = last
+        }
+        viewModel.loadInitialContent()
     }
     
-    // MARK: - Footer spinner
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.keyboardDismissMode = .onDrag
+        tableView.tableFooterView = UIView(frame: .zero)
+    }
+    
     private func setLoadingFooter(_ loading: Bool) {
         Task { @MainActor in
             if loading {
@@ -90,7 +95,6 @@ class SearchViewController: UIViewController {
         searchBar.searchTextField.accessibilityIdentifier = "search.searchField"
         tableView.accessibilityIdentifier = "search.table"
     }
-    
 }
 
 // MARK: - UITableViewDataSource && UITableViewDelegate
@@ -115,7 +119,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.configure(with: movie, isFavorite: self.viewModel.isFavorite(movie))
             }
         }
-
+        
         cell.selectionStyle = .none
         return cell
     }
@@ -146,7 +150,6 @@ extension SearchViewController: UISearchBarDelegate {
         viewModel.search(query: searchBar.text ?? "")
     }
     
-    // MARK: - Helpers
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
